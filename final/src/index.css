@@ -1,0 +1,107 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+html {
+  height: 100%;
+  font-size: 22px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.name {
+  text-align: center;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2px);
+  margin: auto;
+}
+
+.container {
+  max-width: calc(100% - 2px);
+  flex: 1 0 auto;
+}
+
+header {
+  width: calc(100% - 2px);
+  padding: 0 25px;
+  background-color: mediumblue;
+  color: white;
+  flex: 0 0 auto;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+footer {
+  width: calc(100% - 2px);
+  padding: 0 25px;
+  background-color: mediumblue;
+  color: white;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+form {
+  width: calc(100% - 2px);
+  position: fixed;
+  top: 50px;
+}
+
+button {
+  width: 33.33%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.selected {
+  background-color: #000;
+  color: #fff;
+}
+
+ul {
+  padding: 3rem 2rem 1rem;
+  margin-top: 2.5rem;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 4.5rem;
+  padding: 2rem 0 0 0;
+}
+
+td {
+  border: 1px solid #000;
+  padding: 0.25rem;
+}
