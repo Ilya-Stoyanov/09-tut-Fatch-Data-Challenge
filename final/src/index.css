@@ -105,3 +105,14 @@ td {
   border: 1px solid #000;
   padding: 0.25rem;
 }
+
+.error {
+  font-size: 40px;
+  color: #ff0000;
+  font-weight: 700;
+}
+
+.loading{
+  text-align: center;
+  font-size: 30px;
+}

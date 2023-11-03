@@ -10,19 +10,28 @@ function App() {
   const [reqType, setReqType] = useState("posts")
   const [items, setItems] = useState([]);
 
+  const [fetchError, setFetchError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect( () => {
     const fetchItems = async () => {
       try {
         const response = await fetch(`${API_URL}/${reqType}`)
+        if(!response.ok) throw Error("Did not receive data API. Please try again later")
         const data = await response.json()
         // console.log(data); // our array
         setItems(data)
+        setFetchError(null)
       } catch (error) {
-        console.log(error);
+        setFetchError(error.message)
+      } finally{
+        setIsLoading(false)
       }
   
     }
-    fetchItems()
+    setTimeout(() => {
+      (async () => fetchItems())()
+    }, 1000);
   }, [reqType])
   
 
@@ -30,11 +39,15 @@ function App() {
     <div className="App">
        <Header/>
        <main>
-        <Form 
-          reqType={reqType}
-          setReqType={setReqType}
-        />
-      <Table items={items}/>
+       {isLoading && <p className='loading'>Loading...</p>}
+       {fetchError && <p className="error">{`Error: ${fetchError}`}</p> }
+       {!fetchError && !isLoading && <>
+          <Form 
+              reqType={reqType}
+              setReqType={setReqType}
+          />
+          <Table items={items}/>
+        </>}
        </main>
       <Footer />
     </div>

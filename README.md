@@ -166,6 +166,55 @@ const first = Object.keys(items[0])
   
 ```
 
+## Add fetchError
+
+```bash
+const [fetchError, setFetchError] = useState(null)
+
+try {
+  const response = await fetch(`${API_URL}/${reqType}`)
+  if(!response.ok) throw Error("Did not receive data API. Please try again later")
+  const data = await response.json()
+  setItems(data)
+  setFetchError(null)
+} 
+
+/* Add to main tag */
+{fetchError && <p className="error">{`Error: ${fetchError}`}</p> }
+  {!fetchError &&  <>
+    <Form 
+        reqType={reqType}
+        setReqType={setReqType}
+    />
+    <Table items={items}/>
+  </>}
+```
+## Add Loading...
+```bash
+const [isLoading, setIsLoading] = useState(true)
+
+/* after catch add finally */
+finally{
+  setIsLoading(false)
+}
+
+setTimeout(() => {
+  (async () => fetchItems())()
+}, 2000);
+
+/* Add to main tag */
+
+{isLoading && <p className='loading'>Loading...</p>}
+
+{!fetchError && !isLoading && <>
+  <Form 
+      reqType={reqType}
+      setReqType={setReqType}
+  />
+  <Table items={items}/>
+</>}
+
+```
 
 ## Больше уроков
 
