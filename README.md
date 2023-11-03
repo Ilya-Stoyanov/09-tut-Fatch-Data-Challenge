@@ -177,7 +177,9 @@ try {
   const data = await response.json()
   setItems(data)
   setFetchError(null)
-} 
+} catch (error) {
+  setFetchError(error.message)
+}
 
 /* Add to main tag */
 {fetchError && <p className="error">{`Error: ${fetchError}`}</p> }
